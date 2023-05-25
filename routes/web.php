@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\FormController_tugas2;
+use App\Http\Controllers\FormController_praktik;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +31,11 @@ route::get('/hallo', function() {
 route::get('/hallo2', function() {
     return view ('hallo.halloworld');
 });
+Route::get('/form_praktik', [FormController_praktik::class, 'index']);
+Route::post('/hasil_praktik', [FormController_praktik::class, 'hasil']);
+
 Route::get('/form', [FormController::class, 'index']);
 Route::post('/hasil', [FormController::class, 'hasil']);
+
+Route::get('/form2', [FormController_tugas2::class, 'index']);
+Route::post('/hasil2', [FormController_tugas2::class, 'hasil']);
