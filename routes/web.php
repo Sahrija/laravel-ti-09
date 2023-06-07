@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\FormController_tugas2;
 use App\Http\Controllers\FormController_praktik;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\FrontendController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,12 +28,12 @@ Route::get('/salam', function () {
     return ('assalamualaikum');
 });
 //routing.mengarahkan ke view
-route::get('/hallo', function() {
-    return view ('hallo');
+route::get('/hallo', function () {
+    return view('hallo');
 });
 
-route::get('/hallo2', function() {
-    return view ('hallo.halloworld');
+route::get('/hallo2', function () {
+    return view('hallo.halloworld');
 });
 Route::get('/form_praktik', [FormController_praktik::class, 'index']);
 Route::post('/hasil_praktik', [FormController_praktik::class, 'hasil']);
@@ -39,3 +43,11 @@ Route::post('/hasil', [FormController::class, 'hasil']);
 
 Route::get('/form2', [FormController_tugas2::class, 'index']);
 Route::post('/hasil2', [FormController_tugas2::class, 'hasil']);
+
+Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/produk',[ProdukController::class, 'index']);
+
+Route::prefix('frontend')->group(function () {
+    Route::get('/frontend', [FrontendController::class, 'index'])->name('frontend');
+
+});
