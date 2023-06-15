@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\pesanan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\FormController_tugas2;
@@ -7,6 +8,8 @@ use App\Http\Controllers\FormController_praktik;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\PesananController;
+use App\Http\Controllers\KategoriProdukController;
 
 
 /*
@@ -46,6 +49,11 @@ Route::post('/hasil2', [FormController_tugas2::class, 'hasil']);
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/produk',[ProdukController::class, 'index']);
+route::get('/produk/create',[ProdukController::class, 'create']);
+route::post('/produk/store',[ProdukController::class, 'store']);
+
+route::get('/pesanan',[PesananController::class, 'index'])-> name('pesanan');
+route::get('/kategori',[KategoriProdukController::class, 'index'])-> name('kategoriproduk');
 
 Route::prefix('frontend')->group(function () {
     Route::get('/frontend', [FrontendController::class, 'index'])->name('frontend');

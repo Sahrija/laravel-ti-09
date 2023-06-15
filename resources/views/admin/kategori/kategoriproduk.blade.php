@@ -27,33 +27,25 @@
         <table id="datatablesSimple">
             <thead>
                 <tr>
-                    <th>No</th>
-                    <th>Kode</th>
+                    <th>no</th>
                     <th>Nama</th>
-                    <th>Harga Jual</th>
-                    <th>Qty</th>
                     <th>Action</th>
                 </tr>
             </thead>
-            <tfoot>
+           <tfoot>
                 <tr>
                     <th>No</th>
-                    <th>Kode</th>
                     <th>Nama</th>
-                    <th>Harga Jual</th>
-                    <th>Qty</th>
                     <th>Action</th>
                 </tr>
-            </tfoot>
+           </tfoot>
             <tbody>
         @php $no = 1; @endphp
-        @foreach($produk as $p)
+        @foreach($Kategori as $k)
             <tr>
                 <td>{{$no++}}</td>
-                <td>{{$p->kode}}</td>
-                <td>{{$p->nama}}</td>
-                <td>{{$p->harga_jual}}</td>
-                <td>{{$p->stok}}</td>
+                <td>{{$k->nama}}</td>
+            
                 <td>
                     <a class="btn btn-primary" href="">View</a>
                     <a class="btn btn-primary" href="">Edit</a>

@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Models\produk;
-use App\Http\Models\KategoriProduk;
+use App\Models\produk;
+use App\Models\KategoriProduk;
 use DB;
+
 //use illuminate\Support\Facades\DB;
 
 class ProdukController extends Controller
@@ -15,17 +16,21 @@ class ProdukController extends Controller
      */
     public function index()
     {
-    
+
         //$kategori_produk = KategoriProduk::all();
 
         //$kategori_produk = DB::table($kategori_produk)->get();
 
         $produk = DB::table('produk')
-        ->join('kategori_produk', 'produk.kategori_produk_id', '=',
-        'kategori_produk.id')
-        ->select('produk.*', 'kategori_produk.nama as nama_kategori')
-        ->get();
-        
+            ->join(
+                'kategori_produk',
+                'produk.kategori_produk_id',
+                '=',
+                'kategori_produk.id'
+            )
+            ->select('produk.*', 'kategori_produk.nama as nama_kategori')
+            ->get();
+
         //untuk mengarahkan kefile produk
         return view('admin.produk.index', compact('produk'));
     }
@@ -36,6 +41,10 @@ class ProdukController extends Controller
     public function create()
     {
         //
+        $kategori_produk = DB::table('kategori_produk')->get();
+        $produk = DB::table('produk')->get();
+
+        return view('admin.produk.create', compact('kategori_produk', 'produk'));
     }
 
     /**
@@ -44,6 +53,18 @@ class ProdukController extends Controller
     public function store(Request $request)
     {
         //
+        $produk = new produk;
+        $produk->kode = $request->kode;
+        $produk->nama = $request->nama;
+        $produk->harga_jual = $request->harga_jual;
+        $produk->harga_beli = $request->harga_beli;
+        $produk->stok = $request->stok;
+        $produk->min_stok = $request->min_stok;
+        $produk->deskripsi = $request->deskripsi;
+        $produk->kategori_produk_id = $request->kategori_produk_id;
+        $produk->save();
+        return redirect('produk');
+
     }
 
     /**

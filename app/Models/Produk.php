@@ -15,7 +15,9 @@ class Produk extends Model
 
     //memanggil table yang akan dikelola
     protected $table = 'produk';
+    public $timestamps = false;
     //mendekiarasikan kolom yang ada didalam
+
     protected $fillable = [
         'kode',
         'nama',
@@ -26,7 +28,17 @@ class Produk extends Model
         'deskripsi',
         'kategori_produk_id'
     ];
-    public function KategoriProduk(){
+    public function KategoriProduk()
+    {
         return $this->belongsTo(KategoriProduk::class);
     }
+
+    public function getAllData()
+    {
+        return DB::table('produk')
+            ->join('kategori_produk', 'produk.kategori_produk_id', '=', 'kategori_produk.id')
+            ->select('produk.*', 'kategori_produk.nama as nama')
+            ->get();
+    }
+
 }

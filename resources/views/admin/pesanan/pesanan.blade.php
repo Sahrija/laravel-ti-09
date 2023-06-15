@@ -27,33 +27,32 @@
         <table id="datatablesSimple">
             <thead>
                 <tr>
-                    <th>No</th>
-                    <th>Kode</th>
-                    <th>Nama</th>
-                    <th>Harga Jual</th>
-                    <th>Qty</th>
+                    <th>no</th>
+                    <th>Tanggal</th>
+                    <th>nama_pesanan'</th>
+                    <th>alamat_pesanan</th>
+                    <th>no_hp</th>
+                    <th>email</th>
+                    <th>jumlah_pesanan</th>
+                    <th>deskripsi</th>
+                    <th>produk_id</th>
                     <th>Action</th>
                 </tr>
             </thead>
-            <tfoot>
-                <tr>
-                    <th>No</th>
-                    <th>Kode</th>
-                    <th>Nama</th>
-                    <th>Harga Jual</th>
-                    <th>Qty</th>
-                    <th>Action</th>
-                </tr>
-            </tfoot>
+           
             <tbody>
         @php $no = 1; @endphp
-        @foreach($produk as $p)
+        @foreach($pesanan as $p)
             <tr>
                 <td>{{$no++}}</td>
-                <td>{{$p->kode}}</td>
-                <td>{{$p->nama}}</td>
-                <td>{{$p->harga_jual}}</td>
-                <td>{{$p->stok}}</td>
+                <td>{{$p->tanggal}}</td>
+                <td>{{$p->nama_pemesan}}</td>
+                <td>{{$p->alamat_pemesan}}</td>
+                <td>{{$p->no_hp}}</td>
+                <td>{{$p->email}}</td>
+                <td>{{$p->jumlah_pesanan}}</td>
+                <td>{{$p->deskripsi}}</td>
+                <td>{{$p->produk_id}}</td>
                 <td>
                     <a class="btn btn-primary" href="">View</a>
                     <a class="btn btn-primary" href="">Edit</a>
